@@ -4,12 +4,17 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item android:title="@string/main_menu"/>
+        <item
+            android:id="@+id/menu_main_dashboard"
+            android:title="@string/menu_main_dashboard" />
+        <item
+            android:id="@+id/menu_listview"
+            android:title="@string/menu_listview"/>
     </group>
 
     <item android:title="@string/communicate">
         <menu>
-            <item android:title="@string/about_creator"/>
+            <item android:title="@string/menu_about_creator"/>
         </menu>
     </item>
 
