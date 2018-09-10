@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">android-modules-example</string>
+    <string name="app_name">Android Modules Example</string>
+    <string name="navigation_drawer_open">1</string>
+    <string name="navigation_drawer_close">0</string>
+    
+    <string name="nav_header_name">Muhammad Fauzan Noor</string>
+    <string name="nav_header_sub_name">Android Developer</string>
+    
+    <string name="image_notfound">Not Found</string>
+    
+    <!-- String Resource Menu -->
+    <string name="main_menu">Main Dashboard</string>
+
+    <string name="communicate">Communicate</string>
+    <string name="about_creator">About Creator</string>
 </resources>
