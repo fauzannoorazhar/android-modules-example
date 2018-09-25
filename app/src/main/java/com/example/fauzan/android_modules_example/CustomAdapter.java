@@ -1,46 +1,35 @@
 package com.example.fauzan.android_modules_example;
 
 import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class CustomAdapter extends BaseAdapter {
+import java.util.ArrayList;
 
-    private String[] universitas;
-    private Activity activity;
+public class CustomAdapter extends ArrayAdapter<Universitas> {
 
-    public CustomAdapter(Activity activity, String[] universitas) {
-        this.activity = activity;
-        this.universitas = universitas;
+    public CustomAdapter(Activity activity, ArrayList<Universitas> arrayList){
+        super(activity, 0, arrayList);
     }
 
+    @NonNull
     @Override
-    public int getCount() {
-        return 0;
-    }
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        View view = convertView;
+        if (view == null) {
+            view = LayoutInflater.from(getContext()).inflate(R.layout.row_listview, parent, false);
+        }
 
-    @Override
-    public Object getItem(int i) {
-        return null;
-    }
+        Universitas universitas = getItem(position);
 
-    @Override
-    public long getItemId(int i) {
-        return 0;
-    }
+        TextView textView = view.findViewById(R.id.tv_row_listview);
+        textView.setText(universitas.nama);
 
-    @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        LayoutInflater inflater = (LayoutInflater) activity.getSystemService(activity.LAYOUT_INFLATER_SERVICE);
-
-        View viewCustomAdapter = inflater.inflate(R.layout.row_listview, null);
-
-        TextView textViewList = viewCustomAdapter.findViewById(R.id.tv_row_listview);
-        textViewList.setText(universitas[i]);
-
-        return viewCustomAdapter;
+        return view;
     }
 }

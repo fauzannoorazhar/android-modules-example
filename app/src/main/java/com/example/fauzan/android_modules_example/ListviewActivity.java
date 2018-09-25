@@ -3,7 +3,10 @@ package com.example.fauzan.android_modules_example;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class ListviewActivity extends AppCompatActivity {
 
@@ -21,8 +24,17 @@ public class ListviewActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        final ListView listView = (ListView) findViewById(R.id.listview_activty);
-        CustomAdapter customAdapter = new CustomAdapter(ListviewActivity.this, universitas);
+        /*CustomAdapter customAdapter = new CustomAdapter(this, universitas);
+        listView.setAdapter(customAdapter);*/
+
+        ArrayList<Universitas> customeArrayList = new ArrayList<Universitas>();
+        customeArrayList.add(new Universitas("Institute Tekhnologi Bandung"));
+        customeArrayList.add(new Universitas("Universitas Komputer"));
+
+        Log.i("arraList", "" + customeArrayList.size());
+
+        CustomAdapter customAdapter = new CustomAdapter(this,customeArrayList);
+        ListView listView = (ListView) findViewById(R.id.listview_activty);
         listView.setAdapter(customAdapter);
     }
 
