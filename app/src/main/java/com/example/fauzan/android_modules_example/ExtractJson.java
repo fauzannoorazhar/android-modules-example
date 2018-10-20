@@ -12,16 +12,18 @@ import java.util.ArrayList;
 
 public class ExtractJson {
 
-    private static final String SAMPEL_JSON = "{ \"kampus\": [ { \"nama\": \"Universitas Gadjah Mada\", \"lokasi\": \"Yogyakarta\" }, { \"nama\": \"Universitas Indonesia\", \"lokasi\": \"Depok, Jawa Barat\" }, { \"nama\": \"Universitas Negeri Yogyakarta\", \"lokasi\": \"Yogyakarta\" }, { \"nama\": \"Universitas Brawijaya\", \"lokasi\": \"Malang\" }, { \"nama\": \"Institut Pertanian Bogor\", \"lokasi\": \"Bogor\" }, { \"nama\": \"Universitas Diponegoro\", \"lokasi\": \"Semarang\" }, { \"nama\": \"Universitas Sebelas Maret\", \"lokasi\": \"Surakarta\" }, { \"nama\": \"Universitas Sumatera Utara\", \"lokasi\": \"Medan\" }, { \"nama\": \"Institut Teknologi Bandung\", \"lokasi\": \"Bandung\" }, { \"nama\": \"Universitas Airlangga\", \"lokasi\": \"Surabaya\" }, { \"nama\": \"Universitas Pendidikan Indonesia\", \"lokasi\": \"Bandung\" }, { \"nama\": \"Universitas Lampung\", \"lokasi\": \"Bandar Lampung\" }, { \"nama\": \"Institut Teknologi Sepuluh Nopember\", \"lokasi\": \"Surabaya\" }, { \"nama\": \"Universitas Negeri Semarang\", \"lokasi\": \"Semarang\" } ] }";
+    private static final String SAMPEL_JSON = "[{ \"kampus\": [ { \"nama\": \"Universitas Gadjah Mada\", \"lokasi\": \"Yogyakarta\" }, { \"nama\": \"Universitas Indonesia\", \"lokasi\": \"Depok, Jawa Barat\" }, { \"nama\": \"Universitas Negeri Yogyakarta\", \"lokasi\": \"Yogyakarta\" }, { \"nama\": \"Universitas Brawijaya\", \"lokasi\": \"Malang\" }, { \"nama\": \"Institut Pertanian Bogor\", \"lokasi\": \"Bogor\" }, { \"nama\": \"Universitas Diponegoro\", \"lokasi\": \"Semarang\" }, { \"nama\": \"Universitas Sebelas Maret\", \"lokasi\": \"Surakarta\" }, { \"nama\": \"Universitas Sumatera Utara\", \"lokasi\": \"Medan\" }, { \"nama\": \"Institut Teknologi Bandung\", \"lokasi\": \"Bandung\" }, { \"nama\": \"Universitas Airlangga\", \"lokasi\": \"Surabaya\" }, { \"nama\": \"Universitas Pendidikan Indonesia\", \"lokasi\": \"Bandung\" }, { \"nama\": \"Universitas Lampung\", \"lokasi\": \"Bandar Lampung\" }, { \"nama\": \"Institut Teknologi Sepuluh Nopember\", \"lokasi\": \"Surabaya\" }, { \"nama\": \"Universitas Negeri Semarang\", \"lokasi\": \"Semarang\" } ] }]";
 
-    public static ArrayList<Universitas> extractJsonKampus() {
+    public static ArrayList<Universitas> extractJsonKampus(String stringJson) {
 
         ArrayList<Universitas> universitasArrayList = new ArrayList<>();
 
+        Log.i("baseJsonArray", "" + stringJson);
+
         try {
-            JSONObject baseJsonObject = new JSONObject(SAMPEL_JSON);
-            JSONArray baseJsonArray = baseJsonObject.getJSONArray("kampus");
-            Log.i("baseJsonArray", "" + baseJsonArray.toString());
+            JSONObject baseJsonObject = new JSONObject(stringJson);
+            JSONArray baseJsonArray = baseJsonObject.getJSONArray("universitas");
+            //Log.i("baseJsonArray", "" + baseJsonArray.toString());
 
             for (int i = 0; i < baseJsonArray.length(); i++) {
                 JSONObject baseJsonKampus = baseJsonArray.getJSONObject(i);
@@ -33,7 +35,7 @@ public class ExtractJson {
             }
 
         } catch (JSONException e) {
-            Log.e("extractJson","Problem parsing the earthquake JSON result", e);
+            Log.e("extractJson","Problem parsing the universitas JSON result", e);
         }
 
         return universitasArrayList;
